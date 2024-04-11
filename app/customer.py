@@ -61,10 +61,12 @@ class Customer:
               f"Thanks, {self.name}, for your purchase!\n"
               f"You have bought:")
         for product, amount_and_cost in self.bought_products.items():
+            if amount_and_cost["cost"] % 1 != 0:
+                shopping_cost = amount_and_cost["cost"]
+            else:
+                shopping_cost = round(amount_and_cost["cost"])
             print(f"{amount_and_cost["amount"]} {product}s "
-                  f"for {amount_and_cost["cost"]
-                  if amount_and_cost["cost"] % 1 != 0
-                  else round(amount_and_cost["cost"])} dollars")
+                  f"for {shopping_cost} dollars")
         print(f"Total cost is {self.count_spent_money()} dollars\n"
               f"See you again!\n")
 

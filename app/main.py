@@ -4,9 +4,7 @@ from app.shop import Shop
 
 
 def shop_trip() -> None:
-    json_file_path = ("C:/Users/Dennie/mate-projects/"
-                      "py-shop-trip/app/config.json")
-    with open(json_file_path, "r") as file:
+    with open("config.json", "r") as file:
         json_data = json.load(file)
 
     customers = (Customer(customer) for customer in json_data["customers"])
@@ -39,6 +37,3 @@ def shop_trip() -> None:
         else:
             print(f"{customer.name} "
                   f"doesn't have enough money to make a purchase in any shop")
-
-
-# shop_trip()
