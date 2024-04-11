@@ -21,14 +21,10 @@ class Customer:
         )
 
     def count_fuel_cost(self, shop: Shop, fuel_price: float) -> float:
-        if not isinstance(shop, Shop):
-            raise TypeError(f"{shop} should be Shop type")
         return (((self.distance_to(shop) / 100) * self.car.fuel_consumption)
                 * fuel_price)
 
     def count_shop_costs(self, shop: Shop) -> float:
-        if not isinstance(shop, Shop):
-            raise TypeError(f"{shop} should be Shop type")
         return sum(
             product_quantity * price
             for product_quantity, price
@@ -57,7 +53,8 @@ class Customer:
 
     def get_receipt(self) -> None:
         current_time = datetime.datetime.now()
-        print(f"Date: {current_time.strftime("%d/%m/%Y %H:%M:%S")}\n"
+        time_format = "%d/%m/%Y %H:%M:%S"
+        print(f"Date: {current_time.strftime(time_format)}\n"
               f"Thanks, {self.name}, for your purchase!\n"
               f"You have bought:")
         for product, amount_and_cost in self.bought_products.items():
@@ -65,7 +62,7 @@ class Customer:
                 shopping_cost = amount_and_cost["cost"]
             else:
                 shopping_cost = round(amount_and_cost["cost"])
-            print(f"{amount_and_cost["amount"]} {product}s "
+            print(f"{amount_and_cost['amount']} {product}s "
                   f"for {shopping_cost} dollars")
         print(f"Total cost is {self.count_spent_money()} dollars\n"
               f"See you again!\n")

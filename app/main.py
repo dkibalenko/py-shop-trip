@@ -29,7 +29,7 @@ def shop_trip() -> None:
         }
 
         if customer.money >= cheapest_shop["products_cost"]:
-            print(f"{customer.name} rides to {cheapest_shop["shop"].name}\n")
+            print(f"{customer.name} rides to {cheapest_shop['shop'].name}\n")
             customer.drive_to(cheapest_shop["shop"])
             customer.buy_products(cheapest_shop["shop"].products)
             customer.get_receipt()
